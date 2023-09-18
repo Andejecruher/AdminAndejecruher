@@ -119,7 +119,8 @@
         })(window, document, 'script', 'dataLayer', 'GTM-THQTXJ7');</script>
         <!-- End Google Tag Manager -->
     @endif
-
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <script src="{{ mix('js/app.js') }}"></script>
 
 </head>
 

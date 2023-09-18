@@ -55,17 +55,37 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', Profile::class)->name('profile');
     Route::get('/profile-example', ProfileExample::class)->name('profile-example');
     Route::get('/users', Users::class)->name('users');
-    Route::get('/login-example', LoginExample::class)->name('login-example');
-    Route::get('/register-example', RegisterExample::class)->name('register-example');
-    Route::get('/forgot-password-example', ForgotPasswordExample::class)->name('forgot-password-example');
-    Route::get('/reset-password-example', ResetPasswordExample::class)->name('reset-password-example');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
-    Route::get('/transactions', Transactions::class)->name('transactions');
-    Route::get('/bootstrap-tables', BootstrapTables::class)->name('bootstrap-tables');
-    Route::get('/lock', Lock::class)->name('lock');
-    Route::get('/buttons', Buttons::class)->name('buttons');
-    Route::get('/notifications', Notifications::class)->name('notifications');
-    Route::get('/forms', Forms::class)->name('forms');
-    Route::get('/modals', Modals::class)->name('modals');
-    Route::get('/typography', Typography::class)->name('typography');
+
+    Route::group(['prefix' => 'articulos'], function () {
+        Route::get('/', [ArticuloController::class, 'index']);
+        Route::get('/{id}', [ArticuloController::class, 'show']);
+        Route::post('/', [ArticuloController::class, 'store']);
+        Route::put('/{id}', [ArticuloController::class, 'update']);
+        Route::delete('/{id}', [ArticuloController::class, 'destroy']);
+    });
+
+    Route::group(['prefix' => 'tags'], function () {
+        Route::get('/', [TagController::class, 'index']);
+        Route::get('/{id}', [TagController::class, 'show']);
+        Route::post('/', [TagController::class, 'store']);
+        Route::put('/{id}', [TagController::class, 'update']);
+        Route::delete('/{id}', [TagController::class, 'destroy']);
+    });
+
+    Route::group(['prefix' => 'comentarios'], function () {
+        Route::get('/', [ComentarioController::class, 'index']);
+        Route::get('/{id}', [ComentarioController::class, 'show']);
+        Route::post('/', [ComentarioController::class, 'store']);
+        Route::put('/{id}', [ComentarioController::class, 'update']);
+        Route::delete('/{id}', [ComentarioController::class, 'destroy']);
+    });
+
+    Route::group(['prefix' => 'categorias'], function () {
+        Route::get('/', [CategoriaController::class, 'index']);
+        Route::get('/{id}', [CategoriaController::class, 'show']);
+        Route::post('/', [CategoriaController::class, 'store']);
+        Route::put('/{id}', [CategoriaController::class, 'update']);
+        Route::delete('/{id}', [CategoriaController::class, 'destroy']);
+    });
 });
