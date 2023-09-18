@@ -24,7 +24,7 @@ use App\Http\Livewire\Transactions;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\ResetPasswordExample;
 use App\Http\Livewire\UpgradeToPro;
-use App\Http\Livewire\Users;
+use App\Http\Livewire\Users\Users;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +49,6 @@ Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')
 
 Route::get('/404', Err404::class)->name('404');
 Route::get('/500', Err500::class)->name('500');
-Route::get('/upgrade-to-pro', UpgradeToPro::class)->name('upgrade-to-pro');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', Profile::class)->name('profile');

@@ -30,11 +30,11 @@
     "devDependencies": {
         "browser-sync": "^2.26.13",
         "del": "4.1.1",
-        "gulp": "^3.9.1",
+        "gulp": "^4.0.2",
         "gulp-autoprefixer": "6.1.0",
         "gulp-clean-css": "4.2.0",
         "gulp-cssbeautify": "1.0.1",
-        "gulp-file-include": "^0.10.0",
+        "gulp-file-include": "^2.3.0",
         "gulp-header": "2.0.7",
         "gulp-htmlmin": "5.0.1",
         "gulp-npm-dist": "^1.0.3",
