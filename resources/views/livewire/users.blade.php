@@ -28,7 +28,7 @@
                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                     </svg>
                 </span>
-                <input type="text" class="form-control" placeholder="Search users">
+                <input type="text" wire:model.debounce.500ms="search" class="form-control" placeholder="Search users">
             </div>
             <select class="form-select fmxw-200 d-none d-md-inline" aria-label="Message select example 2">
                 <option selected>All</option>
@@ -57,61 +57,7 @@
         </select>
         <button class="btn btn-sm px-3 btn-secondary ms-3">Apply</button>
     </div> -->
-    <table class="table user-table table-hover align-items-center">
-        <thead>
-            <tr>
-                <th class="border-bottom">#</th>
-                <th class="border-bottom">Name</th>
-                <th class="border-bottom">Role</th>
-                <th class="border-bottom">Date Created</th>
-                <th class="border-bottom">Status</th>
-                <th class="border-bottom">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($users as $user)
-            <tr>
-                <td>
-                    <div class="form-check dashboard-check">
-                        <label class="form-check-label" for="userCheck{{ $user->id }}">{{ $user->id }}</label>
-                    </div>
-                </td>
-                <td>
-                    <a href="#" class="d-flex align-items-center">
-                        <img src="/storage/avatars/{{ $user->avatar }}" class="avatar rounded-circle me-3" alt="Avatar">
-                        <div class="d-block">
-                            <span class="fw-bold">{{ $user->first_name }} {{ $user->last_name }}</span>
-                            <div class="small text-gray">{{ $user->email }}</div>
-                        </div>
-                    </a>
-                </td>
-                <td><span class="fw-normal">{{ $user->role }}</span></td>
-                <td><span class="fw-normal d-flex align-items-center">{{ $user->created_at }}</span></td>
-                <td><span class="fw-normal text-success">{{ $user->status }}</span></td>
-                <td>
-                    <div class="btn-group">
-                        <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" style="fill: black;"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                <path d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z" />
-                            </svg>
-                            <span class="visually-hidden">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <span class="fas fa-user-shield me-2"></span>
-                                View Details
-                            </a>
-                            <a class="dropdown-item text-danger d-flex align-items-center" href="#">
-                                <span class="fas fa-user-times me-2"></span>
-                                Delete user
-                            </a>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <livewire:user-table />
     <div class="row justify-content-between align-items-center mt-5">
         <div class="col-12 col-lg-12 d-md-flex justify-content-center">
             <nav aria-label="Page navigation example">
